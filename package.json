@@ -1,6 +1,6 @@
 {
   "name": "electron-mocks",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Testing mocks for Electron",
   "repository": {
     "type": "git",
@@ -21,7 +21,15 @@
     "semantic-release": "semantic-release",
     "test": "mocha -r ts-node/register 'test/**/*.test.ts'"
   },
-  "keywords": [],
+  "keywords": [
+    "electron",
+    "mocks",
+    "testing",
+    "unit testing",
+    "stubbing",
+    "spies",
+    "sinon"
+  ],
   "author": "Jeff Robbins",
   "license": "MIT",
   "devDependencies": {
@@ -37,6 +45,8 @@
     "@typescript-eslint/parser": "^5.59.6",
     "chai": "^4.3.7",
     "chai-as-promised": "^7.1.1",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "electron": "^24.3.1",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
@@ -48,9 +58,6 @@
   },
   "dependencies": {
     "sinon": "^15.1.0"
-  },
-  "peerDependencies": {
-    "electron": "^24.3.1"
   },
   "publishConfig": {
     "access": "public"
