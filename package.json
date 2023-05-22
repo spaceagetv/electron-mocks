@@ -19,7 +19,7 @@
     "lint": "eslint --ext .ts .",
     "lint:fix": "eslint --ext .ts . --fix",
     "semantic-release": "semantic-release",
-    "test": "mocha -r ts-node/register -p tsconfig.test.json 'test/**/*.test.ts'"
+    "test": "mocha -r ts-node/register 'test/**/*.test.ts'"
   },
   "keywords": [],
   "author": "Jeff Robbins",
