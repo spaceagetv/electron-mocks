@@ -6,7 +6,11 @@
     "type": "git",
     "url": "https://github.com/spaceagetv/electron-mocks"
   },
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "tsc",
     "lint": "eslint --ext .ts .",
