@@ -1,6 +1,6 @@
 {
   "name": "electron-mocks",
-  "version": "0.0.0-development",
+  "version": "1.0.1",
   "description": "Testing mocks for Electron",
   "repository": {
     "type": "git",

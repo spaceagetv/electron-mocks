@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/spaceagetv/electron-mocks/compare/v1.0.0...v1.0.1) (2023-05-22)
+
+
+### Bug Fixes
+
+* public ([dea1cb4](https://github.com/spaceagetv/electron-mocks/commit/dea1cb4030f4e1eb734abbad2b980d18df5ed733))
+
 # 1.0.0 (2023-05-22)
 
 
