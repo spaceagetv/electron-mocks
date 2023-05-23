@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/spaceagetv/electron-mocks/compare/v1.0.3...v1.0.4) (2023-05-23)
+
+
+### Bug Fixes
+
+* getBackgroundColor() ([d86995c](https://github.com/spaceagetv/electron-mocks/commit/d86995c9d723f6bad435720ed3758b344a5d9fac))
+
 ## [1.0.3](https://github.com/spaceagetv/electron-mocks/compare/v1.0.2...v1.0.3) (2023-05-22)
 
 
