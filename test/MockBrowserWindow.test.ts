@@ -16,6 +16,7 @@ describe('MockBrowserWindow', () => {
       y: 200,
       width: 723,
       height: 451,
+      backgroundColor: '#000000',
       show: false,
     })
     // expect ready-to-show event to be emitted
@@ -33,6 +34,7 @@ describe('MockBrowserWindow', () => {
     expect(window.getSize()).to.deep.equal([723, 451])
     expect(window.getPosition()).to.deep.equal([100, 200])
     expect(window.isVisible()).to.be.false
+    expect(window.getBackgroundColor()).to.equal('#000000')
     const showPromise = new Promise((resolve) => {
       window.on('show', resolve)
     })
