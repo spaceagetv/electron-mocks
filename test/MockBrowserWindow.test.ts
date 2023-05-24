@@ -1,5 +1,6 @@
 import chai, { expect } from 'chai'
 import chaiAsPromised from 'chai-as-promised'
+import sinon from 'sinon'
 import { MockBrowserWindow } from '../src/MockBrowserWindow'
 
 chai.use(chaiAsPromised)
@@ -41,5 +42,51 @@ describe('MockBrowserWindow', () => {
     window.show()
     await showPromise
     expect(window.isVisible()).to.be.true
+  })
+
+  it('should emit correct events when window is closed', async () => {
+    const window = new MockBrowserWindow()
+    const closePromise = new Promise((resolve) => {
+      window.on('close', resolve)
+    })
+    const closedPromise = new Promise((resolve) => {
+      window.on('closed', resolve)
+    })
+    window.close()
+    await closePromise
+    await closedPromise
+  })
+
+  it('should be able to load a URL', async () => {
+    const window = new MockBrowserWindow()
+    const loadPromise = new Promise((resolve) => {
+      window.webContents.on('did-finish-load', resolve)
+    })
+    window.loadURL('https://example.com')
+    await loadPromise
+    sinon.assert.calledOnce(window.webContents.loadURL as sinon.SinonSpy)
+    sinon.assert.calledWithExactly(
+      window.webContents.loadURL as sinon.SinonSpy,
+      'https://example.com'
+    )
+    sinon.assert.calledOnce(window.webContents.loadURL as sinon.SinonSpy)
+    sinon.assert.calledWithExactly(
+      window.webContents.loadURL as sinon.SinonSpy,
+      'https://example.com'
+    )
+  })
+
+  it('should be able to load a file', async () => {
+    const window = new MockBrowserWindow()
+    const loadPromise = new Promise((resolve) => {
+      window.webContents.on('did-finish-load', resolve)
+    })
+    window.loadFile('test/fixtures/index.html')
+    await loadPromise
+    sinon.assert.calledOnce(window.webContents.loadFile as sinon.SinonSpy)
+    sinon.assert.calledWithExactly(
+      window.webContents.loadFile as sinon.SinonSpy,
+      'test/fixtures/index.html'
+    )
   })
 })

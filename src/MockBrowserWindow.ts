@@ -71,8 +71,10 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
     this.emit('closed')
   })
   close = sinon.spy(() => {
-    this.emit('close')
-    this.emit('closed')
+    const closeEvent = new Event('close', { cancelable: true })
+    this.emit('close', closeEvent)
+    if (closeEvent.defaultPrevented) return
+    this.destroy()
   })
   focus = sinon.spy(() => {
     if (this.focusable && !this._focused) {
@@ -167,9 +169,16 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
     ) {
       return
     }
-    Object.assign(this._bounds, bounds)
+    // will resize
+    const resizeEvent = new Event('resize', { cancelable: true })
+    this.emit('resize', resizeEvent, bounds)
+    if (resizeEvent.defaultPrevented) return
     this.emit('resize')
     this.emit('resized')
+    Object.assign(this._bounds, bounds)
+    const moveEvent = new Event('will-move', { cancelable: true })
+    this.emit('will-move', moveEvent)
+    if (moveEvent.defaultPrevented) return
     this.emit('move')
     this.emit('moved')
   })
@@ -259,6 +268,9 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
     return [x, y]
   })
   setTitle = sinon.spy((title: string) => {
+    const event = new Event('page-title-updated', { cancelable: true })
+    this.emit('page-title-updated', event, title)
+    if (event.defaultPrevented) return
     this._title = title
   })
   getTitle = sinon.spy(() => this._title)
@@ -372,6 +384,10 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
     this.webContents = new MockWebContents(
       options.webPreferences
     ) as unknown as WebContents
+
+    this.webContents.on('did-finish-load', () => {
+      this.emit('ready-to-show')
+    })
 
     Object.assign(this._options, options)
     this._backgroundColor = options.backgroundColor || this._backgroundColor
