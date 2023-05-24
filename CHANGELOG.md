@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/spaceagetv/electron-mocks/compare/v1.0.4...v1.0.5) (2023-05-24)
+
+
+### Bug Fixes
+
+* BrowserWindow event emitters + test ([5d17c3f](https://github.com/spaceagetv/electron-mocks/commit/5d17c3f3c12d6dcffca85ee680ac29b2fdcb0690))
+
 ## [1.0.4](https://github.com/spaceagetv/electron-mocks/compare/v1.0.3...v1.0.4) (2023-05-23)
 
 
