@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/spaceagetv/electron-mocks/compare/v1.1.1...v1.1.2) (2023-05-25)
+
+
+### Bug Fixes
+
+* Screen ([d8a285d](https://github.com/spaceagetv/electron-mocks/commit/d8a285d81081247c44138c946d0f486e50d6525e))
+
 ## [1.1.1](https://github.com/spaceagetv/electron-mocks/compare/v1.1.0...v1.1.1) (2023-05-25)
 
 
