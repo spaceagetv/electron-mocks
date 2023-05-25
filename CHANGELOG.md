@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/spaceagetv/electron-mocks/compare/v1.0.5...v1.1.0) (2023-05-25)
+
+
+### Features
+
+* MockScreen + MockDisplay ([0e090aa](https://github.com/spaceagetv/electron-mocks/commit/0e090aaf9995a438fafedbb5288cd68ecf3db9f8))
+
 ## [1.0.5](https://github.com/spaceagetv/electron-mocks/compare/v1.0.4...v1.0.5) (2023-05-24)
 
 
