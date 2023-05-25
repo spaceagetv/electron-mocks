@@ -391,7 +391,7 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
 
     Object.assign(this._options, options)
     this._backgroundColor = options.backgroundColor || this._backgroundColor
-    const { x, y, width, height } = options
+    const { x = 0, y = 0, width = 600, height = 800 } = options
     Object.assign(this._bounds, { x, y, width, height })
 
     if (options.simpleFullscreen !== undefined)
