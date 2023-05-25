@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/spaceagetv/electron-mocks/compare/v1.1.0...v1.1.1) (2023-05-25)
+
+
+### Bug Fixes
+
+* export correctly ([44d13bf](https://github.com/spaceagetv/electron-mocks/commit/44d13bf2e09562661e2c5d91e9adc725367bec80))
+
 # [1.1.0](https://github.com/spaceagetv/electron-mocks/compare/v1.0.5...v1.1.0) (2023-05-25)
 
 
