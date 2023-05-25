@@ -15,16 +15,16 @@ export class MockScreen extends EventEmitter implements Electron.Screen {
     return point
   })
   dipToScreenRect = sinon.spy(
-    (thing: Electron.BrowserWindow | Electron.Rectangle) => {
-      return thing as Electron.Rectangle
+    (window: Electron.BrowserWindow | null, rect: Electron.Rectangle) => {
+      return rect
     }
   )
   screenToDipPoint = sinon.spy((point: Electron.Point) => {
     return point
   })
   screenToDipRect = sinon.spy(
-    (thing: Electron.BrowserWindow | Electron.Rectangle) => {
-      return thing as Electron.Rectangle
+    (window: Electron.BrowserWindow | null, rect: Electron.Rectangle) => {
+      return rect
     }
   )
 
@@ -36,12 +36,24 @@ export class MockScreen extends EventEmitter implements Electron.Screen {
     }
   }
 
-  addDisplay(display: Electron.Display) {
+  addDisplay(display?: Electron.Display) {
+    if (!display) {
+      display = new MockDisplay()
+    }
     this._displays.push(display)
     this.emit('display-added', display)
   }
-  removeDisplay(display: Electron.Display) {
-    this._displays = this._displays.filter((d) => d.id !== display.id)
+  removeDisplay(display: Electron.Display | number) {
+    let d: Electron.Display
+    if (typeof display === 'number') {
+      d = this._displays.find((dd) => dd.id === display)
+    } else {
+      d = display
+    }
+    if (!d) {
+      throw new Error(`Display ${display} not found`)
+    }
+    this._displays = this._displays.filter((dd) => dd.id !== d.id)
     this.emit('display-removed', display)
   }
 }

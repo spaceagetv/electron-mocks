@@ -19,7 +19,7 @@ describe('MockBrowserWindow', () => {
       height: 451,
       backgroundColor: '#000000',
       show: false,
-    })
+    }) as Electron.BrowserWindow
     // expect ready-to-show event to be emitted
     const readyPromise = new Promise((resolve) => {
       window.on('ready-to-show', resolve)
@@ -58,7 +58,7 @@ describe('MockBrowserWindow', () => {
   })
 
   it('should be able to load a URL', async () => {
-    const window = new MockBrowserWindow()
+    const window = new MockBrowserWindow() as Electron.BrowserWindow
     const loadPromise = new Promise((resolve) => {
       window.webContents.on('did-finish-load', resolve)
     })
@@ -77,7 +77,7 @@ describe('MockBrowserWindow', () => {
   })
 
   it('should be able to load a file', async () => {
-    const window = new MockBrowserWindow()
+    const window = new MockBrowserWindow() as Electron.BrowserWindow
     const loadPromise = new Promise((resolve) => {
       window.webContents.on('did-finish-load', resolve)
     })
