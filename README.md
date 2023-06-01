@@ -2,7 +2,7 @@
 
 Mock various Electron classes for testing
 
-This library is a collection of mocked classes to replace various Electron classes during testing. 
+This library is a collection of mocked classes to replace various Electron classes and instances during testing. 
 
 It's still very rough, so please help contribute to help make this functionality more robust.
 
@@ -14,7 +14,7 @@ Currently implemented:
 - [MockScreen](src/MockScreen.ts)
 - [MockDisplay](src/MockDisplay.ts)
 
-All methods are implemented and should return logical values. Additionally, methods are wrapped in sinon.spy() so calls can be queried. All logical events should be emitted.
+All methods are implemented and should return logical values. Additionally, methods are wrapped in [sinon.spy()]([url](https://sinonjs.org/releases/latest/spies/)) so calls can be queried. All logical events should be emitted.
 
 Each class has most/all of its methods stubbed so that you can do things like:
 
@@ -26,7 +26,11 @@ async function createWindow(testing) {
     height: 300,
   })
   await win.loadFile('/path/to/file')
-  win.on('ready-to-show', () => win.show())
+  win.on('ready-to-show', () => {
+    win.show()
+    win.webContents.send('Hello Window!')
+  })
+  
   return win
 }
 
@@ -38,8 +42,9 @@ it('BrowserWindow should function correctly', async () => {
   assert(bounds.width === 500)
   assert(bounds.height === 300)
   sinon.assert(win.webContents.loadURL.calledOnce())
+  sinon.assert(win.webContents.send.calledOnce())
+  sinon.assert(win.webContents.send.calledWith('Hello Window!')
 })
 
 ```
 
-...more info coming soon.
