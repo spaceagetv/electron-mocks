@@ -173,12 +173,11 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
     const resizeEvent = new Event('resize', { cancelable: true })
     this.emit('resize', resizeEvent, bounds)
     if (resizeEvent.defaultPrevented) return
-    this.emit('resize')
-    this.emit('resized')
-    Object.assign(this._bounds, bounds)
     const moveEvent = new Event('will-move', { cancelable: true })
     this.emit('will-move', moveEvent)
     if (moveEvent.defaultPrevented) return
+    Object.assign(this._bounds, bounds)
+    this.emit('resized')
     this.emit('move')
     this.emit('moved')
   })

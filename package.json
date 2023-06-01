@@ -33,6 +33,7 @@
   "author": "Jeff Robbins",
   "license": "MIT",
   "devDependencies": {
+    "@microsoft/api-documenter": "^7.22.6",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^8.0.7",
