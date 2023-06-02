@@ -1,3 +1,11 @@
+## [1.1.5](https://github.com/spaceagetv/electron-mocks/compare/v1.1.4...v1.1.5) (2023-06-02)
+
+
+### Bug Fixes
+
+* BrowserWindow.emit(‘resize’) ([d1edada](https://github.com/spaceagetv/electron-mocks/commit/d1edada2dcc5dabfe3e5c7574287f28f1441b113))
+* updates, tweaks, etc, etc. ([6c6774d](https://github.com/spaceagetv/electron-mocks/commit/6c6774d71f3623e088b9db2d4fe638adc6207fd9))
+
 ## [1.1.4](https://github.com/spaceagetv/electron-mocks/compare/v1.1.3...v1.1.4) (2023-06-01)
 
 
