@@ -65,7 +65,7 @@ it('BrowserWindow should function correctly', async () => {
 
 ```
 
-More/better examples in the [tests/examples](tests/examples) directory.
+More/better examples in the [test/examples](test/examples) directory.
 
 ## Contributing
 
