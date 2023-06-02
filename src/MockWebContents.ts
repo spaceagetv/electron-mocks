@@ -1,6 +1,7 @@
 import { Debugger, Session, WebContents, WebFrame } from 'electron'
 import EventEmitter from 'events'
 import sinon from 'sinon'
+import { MockIpcMain } from './MockIpcMain'
 
 let nextId = 1
 
@@ -174,7 +175,7 @@ export class MockWebContents extends EventEmitter implements WebContents {
   )
   setImageAnimationPolicy = sinon.spy()
 
-  ipc = new EventEmitter() as Electron.IpcMain
+  ipc = new MockIpcMain() as Electron.IpcMain
 
   constructor(options = {} as Electron.WebPreferences) {
     super()

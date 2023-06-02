@@ -27,7 +27,15 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
   kiosk = false
   documentEdited = false
   representedFilename = ''
-  title = ''
+  get title() {
+    return this._title
+  }
+  set title(value: string) {
+    const event = new Event('page-title-updated', { cancelable: true })
+    this.emit('page-title-updated', event, value)
+    if (event.defaultPrevented) return
+    this._title = value
+  }
   minimizable = true
   maximizable = true
   fullScreenable = true
@@ -267,12 +275,9 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
     return [x, y]
   })
   setTitle = sinon.spy((title: string) => {
-    const event = new Event('page-title-updated', { cancelable: true })
-    this.emit('page-title-updated', event, title)
-    if (event.defaultPrevented) return
-    this._title = title
+    this.title = title
   })
-  getTitle = sinon.spy(() => this._title)
+  getTitle = sinon.spy(() => this.title)
   setSheetOffset = sinon.spy()
   flashFrame = sinon.spy()
   setSkipTaskbar = sinon.spy()
@@ -377,6 +382,11 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
   getBrowserViews = sinon.spy(() => [])
   setTitleBarOverlay = sinon.spy()
 
+  // new in Electron 25
+  getWindowButtonPosition = sinon.spy()
+  setWindowButtonPosition = sinon.spy()
+  setBackgroundMaterial = sinon.spy()
+
   private _options: Electron.BrowserWindowConstructorOptions = {}
   constructor(options: Electron.BrowserWindowConstructorOptions = {}) {
     super()
@@ -389,6 +399,8 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
     })
 
     Object.assign(this._options, options)
+    this.title = options.title || ''
+
     this._backgroundColor = options.backgroundColor || this._backgroundColor
     const { x = 0, y = 0, width = 600, height = 800 } = options
     Object.assign(this._bounds, { x, y, width, height })
