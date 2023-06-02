@@ -57,6 +57,35 @@ describe('MockBrowserWindow', () => {
     await closedPromise
   })
 
+  it('should be able to set window bounds', async () => {
+    const window = new MockBrowserWindow()
+    const resizePromise = new Promise((resolve) => {
+      window.on('resize', resolve)
+    })
+    const resizedPromise = new Promise((resolve) => {
+      window.on('resized', resolve)
+    })
+    const movePromise = new Promise((resolve) => {
+      window.on('move', resolve)
+    })
+    const movedPromise = new Promise((resolve) => {
+      window.on('moved', resolve)
+    })
+    window.setBounds({ x: 100, y: 200, width: 723, height: 451 })
+    await resizePromise
+    await resizedPromise
+    await movePromise
+    await movedPromise
+    expect(window.getBounds()).to.deep.equal({
+      x: 100,
+      y: 200,
+      width: 723,
+      height: 451,
+    })
+    expect(window.getSize()).to.deep.equal([723, 451])
+    expect(window.getPosition()).to.deep.equal([100, 200])
+  })
+
   it('should be able to load a URL', async () => {
     const window = new MockBrowserWindow() as Electron.BrowserWindow
     const loadPromise = new Promise((resolve) => {
@@ -74,6 +103,7 @@ describe('MockBrowserWindow', () => {
       window.webContents.loadURL as sinon.SinonSpy,
       'https://example.com'
     )
+    expect(window.webContents.getURL()).to.equal('https://example.com')
   })
 
   it('should be able to load a file', async () => {
@@ -87,6 +117,9 @@ describe('MockBrowserWindow', () => {
     sinon.assert.calledWithExactly(
       window.webContents.loadFile as sinon.SinonSpy,
       'test/fixtures/index.html'
+    )
+    expect(window.webContents.getURL()).to.equal(
+      'file://test/fixtures/index.html'
     )
   })
 })

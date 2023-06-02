@@ -1,6 +1,5 @@
 import chai, { expect } from 'chai'
 import chaiAsPromised from 'chai-as-promised'
-import sinon from 'sinon'
 import { MockScreen } from '../src/MockScreen'
 import { MockDisplay } from '../src/MockDisplay'
 

@@ -43,6 +43,7 @@ export class MockScreen extends EventEmitter implements Electron.Screen {
     this._displays.push(display)
     this.emit('display-added', display)
   }
+
   removeDisplay(display: Electron.Display | number) {
     let d: Electron.Display
     if (typeof display === 'number') {
