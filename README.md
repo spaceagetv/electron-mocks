@@ -79,14 +79,14 @@ MIT
 
 ### Pros
 
-- No need to spin up a real Electron instance
+- Tests run fast. No need to spin up a real Electron instance.
 - No need to mock out IPC calls
 - Test GUI functionality without the overhead of a real Electron instance
-- Tests run fast
 - All methods are already spied on, so you can easily assert that they were called
 
 ### Cons
 
+- Requires swapping your normal classes and instances (`BrowserWindow`, `ipcMain`, `screen`, etc) with mocks for testing – although theoretically, you might be able to do this "automatically" with [proxyquire](https://www.npmjs.com/package/proxyquire).
 - Not a real Electron instance, so some functionality may be missing
 - Not a real Electron instance, so some functionality may be different
 - Not a real Electron instance, so some functionality may be buggy
