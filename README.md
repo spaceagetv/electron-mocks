@@ -36,33 +36,39 @@ We're using TypeScript's [`implements`](https://www.typescriptlang.org/docs/hand
 Each class has most/all of its methods stubbed so that you can do things like:
 
 ```JS
-async function createWindow(testing) {
-  const Bw = testing ? MockBrowserWindow : BrowserWindow
-  const win = new Bw({
-    width: 500,
-    height: 300,
+function createWindow(mock = false) {
+  const BrowserWindowConstructor = mock ? MockBrowserWindow : BrowserWindow
+  const win = new BrowserWindowConstructor({
+    width: 840,
+    height: 620,
+    show: false,
+    webPreferences: {
+      nodeIntegration: true,
+    },
   })
-  await win.loadFile('/path/to/file')
+  win.webContents.loadURL('https://github.com')
   win.on('ready-to-show', () => {
     win.show()
-    win.webContents.send('Hello Window!')
+    win.webContents.send('Hello Window!', true)
   })
-  
   return win
 }
 
-//...elsewhere
-
-it('BrowserWindow should function correctly', async () => {
-  const win = await createBrowserWindow(true)
-  const bounds = win.getBounds()
-  assert(bounds.width === 500)
-  assert(bounds.height === 300)
-  sinon.assert(win.webContents.loadURL.calledOnce())
-  sinon.assert(win.webContents.send.calledOnce())
-  sinon.assert(win.webContents.send.calledWith('Hello Window!')
+describe('electron-mocks example', () => {
+  it('should create a BrowserWindow', async () => {
+    const win = createWindow(true)
+    assert(!win.isVisible(), 'window should not be visible until ready-to-show')
+    await new Promise((resolve) => win.on('ready-to-show', resolve))
+    expect(win).to.be.instanceOf(MockBrowserWindow)
+    const bounds = win.getBounds()
+    assert(bounds.width === 840)
+    assert(bounds.height === 620)
+    assert(win.isVisible(), 'window should be visible after ready-to-show')
+    sinon.assert.calledOnce(win.webContents.loadURL)
+    sinon.assert.calledOnce(win.webContents.send)
+    sinon.assert.calledWith(win.webContents.send, 'Hello Window!', true)
+  })
 })
-
 ```
 
 More/better examples in the [test/examples](test/examples) directory.
