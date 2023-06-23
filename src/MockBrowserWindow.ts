@@ -189,7 +189,9 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
     this.emit('move')
     this.emit('moved')
   })
-  getBounds = sinon.spy(() => this._bounds)
+  getBounds = sinon.spy(() => {
+    return { ...this._bounds }
+  })
   getBackgroundColor = sinon.spy(() => this._backgroundColor)
   setContentBounds = sinon.spy((bounds: Partial<Electron.Rectangle>) => {
     // set bounds offset by menu bar height
@@ -209,7 +211,9 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
       height: height - this._titleBarHeight,
     }
   })
-  getNormalBounds = sinon.spy(() => this._bounds)
+  getNormalBounds = sinon.spy(() => {
+    return { ...this._bounds }
+  })
   setEnabled = sinon.spy((enabled: boolean) => {
     this._enabled = enabled
   })

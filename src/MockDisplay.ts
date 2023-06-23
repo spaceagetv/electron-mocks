@@ -12,14 +12,50 @@ export class MockDisplay implements Electron.Display {
   rotation = 0
   scaleFactor = 1
   touchSupport = 'available' as Availability
-  bounds: Rectangle
-  workArea: Rectangle
+  get bounds(): Rectangle {
+    return { ...this._bounds }
+  }
+  set bounds(bounds: Rectangle) {
+    Object.assign(this._bounds, bounds)
+  }
+  get workArea(): Rectangle {
+    return {
+      x: this._bounds.x,
+      y: this._bounds.y + this._menuBarHeight,
+      width: this._bounds.width,
+      height: this._bounds.height - this._menuBarHeight,
+    }
+  }
+  set workArea(workArea: Rectangle) {
+    Object.assign(this.bounds, {
+      x: workArea.x,
+      y: workArea.y - this._menuBarHeight,
+      width: workArea.width,
+      height: workArea.height + this._menuBarHeight,
+    })
+  }
   accelerometerSupport: 'available' | 'unavailable' | 'unknown' = 'unknown'
   monochrome = false
   colorDepth = 24
   colorSpace = 'rgb8'
-  size: Size
-  workAreaSize: Size
+  get size(): Size {
+    return {
+      width: this._bounds.width,
+      height: this._bounds.height,
+    }
+  }
+  set size(size: Size) {
+    Object.assign(this._bounds, size)
+  }
+  get workAreaSize(): Size {
+    return {
+      width: this.workArea.width,
+      height: this.workArea.height,
+    }
+  }
+  set workAreaSize(size: Size) {
+    Object.assign(this.workArea, size)
+  }
   depthPerComponent = 24
   displayFrequency = 60
   internal = displayId ? false : true
@@ -30,25 +66,5 @@ export class MockDisplay implements Electron.Display {
     this.label = `Display ${this.id}`
     Object.assign(this, display)
     Object.assign(this._bounds, display.size, display.bounds)
-    this.size = {
-      width: this._bounds.width,
-      height: this._bounds.height,
-    }
-    this.workArea = {
-      x: this._bounds.x,
-      y: this._bounds.y + this._menuBarHeight,
-      width: this._bounds.width,
-      height: this._bounds.height - this._menuBarHeight,
-    }
-    this.workAreaSize = {
-      width: this.workArea.width,
-      height: this.workArea.height,
-    }
-    this.bounds = {
-      x: this._bounds.x,
-      y: this._bounds.y,
-      width: this._bounds.width,
-      height: this._bounds.height,
-    }
   }
 }
