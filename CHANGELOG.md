@@ -1,3 +1,10 @@
+## [1.1.7](https://github.com/spaceagetv/electron-mocks/compare/v1.1.6...v1.1.7) (2023-06-23)
+
+
+### Bug Fixes
+
+* better README example + test ([952c295](https://github.com/spaceagetv/electron-mocks/commit/952c2951790c283a8679817f4711caeef7d85308))
+
 ## [1.1.6](https://github.com/spaceagetv/electron-mocks/compare/v1.1.5...v1.1.6) (2023-06-23)
 
 
