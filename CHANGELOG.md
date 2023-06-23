@@ -1,3 +1,10 @@
+## [1.1.6](https://github.com/spaceagetv/electron-mocks/compare/v1.1.5...v1.1.6) (2023-06-23)
+
+
+### Bug Fixes
+
+* object getters should return clone ([8d8c2cf](https://github.com/spaceagetv/electron-mocks/commit/8d8c2cf8ebd6ec933e5c0cf48b6fa78cbf919b91))
+
 ## [1.1.5](https://github.com/spaceagetv/electron-mocks/compare/v1.1.4...v1.1.5) (2023-06-02)
 
 
