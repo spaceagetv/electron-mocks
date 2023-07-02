@@ -122,4 +122,69 @@ describe('MockBrowserWindow', () => {
       'file://test/fixtures/index.html'
     )
   })
+
+  describe('Visibility', () => {
+    it('should be hidden constructed with show: false', async () => {
+      const window = new MockBrowserWindow({
+        show: false,
+      })
+      await new Promise((resolve) => {
+        window.on('ready-to-show', resolve)
+      })
+      expect(window.isVisible()).to.be.false
+    })
+
+    it('should be visible constructed with show: true', async () => {
+      const window = new MockBrowserWindow({
+        show: true,
+      })
+      const didFinishLoadSpy = sinon.spy()
+      window.webContents.on('did-finish-load', didFinishLoadSpy)
+
+      const readyToShowSpy = sinon.spy()
+      window.on('ready-to-show', readyToShowSpy)
+
+      await window.loadURL('https://example.com')
+
+      sinon.assert.calledOnce(didFinishLoadSpy)
+      sinon.assert.notCalled(readyToShowSpy)
+
+      expect(window.isVisible()).to.be.true
+    })
+
+    it('should be visible after calling show()', async () => {
+      const window = new MockBrowserWindow({
+        show: false,
+      })
+      await new Promise((resolve) => {
+        window.on('ready-to-show', resolve)
+      })
+      expect(window.isVisible()).to.be.false
+      window.show()
+      expect(window.isVisible()).to.be.true
+    })
+
+    it('should be hidden after calling hide()', async () => {
+      const window = new MockBrowserWindow({
+        show: true,
+      })
+      expect(window.isVisible()).to.be.true
+      window.hide()
+      expect(window.isVisible()).to.be.false
+    })
+
+    it('should call show() and hide() correctly', async () => {
+      const window = new MockBrowserWindow({
+        show: false,
+      })
+      await new Promise((resolve) => {
+        window.on('ready-to-show', resolve)
+      })
+      expect(window.isVisible()).to.be.false
+      window.show()
+      expect(window.isVisible()).to.be.true
+      window.hide()
+      expect(window.isVisible()).to.be.false
+    })
+  })
 })
