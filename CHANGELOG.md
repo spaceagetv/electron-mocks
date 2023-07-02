@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/spaceagetv/electron-mocks/compare/v1.1.7...v1.1.8) (2023-07-02)
+
+
+### Bug Fixes
+
+* pull_request.yml ([ae8ec6c](https://github.com/spaceagetv/electron-mocks/commit/ae8ec6c2af4a4bd488575383b73dc49593f6d51b))
+
 ## [1.1.7](https://github.com/spaceagetv/electron-mocks/compare/v1.1.6...v1.1.7) (2023-06-23)
 
 
