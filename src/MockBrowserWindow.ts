@@ -399,6 +399,7 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
     ) as unknown as WebContents
 
     this.webContents.on('did-finish-load', () => {
+      if (!this || this.isDestroyed() || this._visible) return
       this.emit('ready-to-show')
     })
 
