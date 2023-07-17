@@ -1,6 +1,14 @@
 // WindowsService.ts
 
-import { BrowserWindow, Screen, screen, IpcMain, ipcMain } from 'electron'
+import {
+  BrowserWindow,
+  Screen,
+  screen,
+  IpcMain,
+  ipcMain,
+  Dialog,
+  dialog,
+} from 'electron'
 
 /**
  * Testable service for creating BrowserWindows in our app,
@@ -10,15 +18,18 @@ export class WindowService {
   _WindowClass: typeof BrowserWindow
   _screenInstance: Screen
   _ipcMainInstance: IpcMain
+  _dialogInstance: Dialog
 
   constructor(
     WindowClass: typeof BrowserWindow,
     screenInstance: Screen,
-    ipcMainInstance: IpcMain
+    ipcMainInstance: IpcMain,
+    dialogInstance: Dialog
   ) {
     this._WindowClass = WindowClass
     this._screenInstance = screenInstance
     this._ipcMainInstance = ipcMainInstance
+    this._dialogInstance = dialogInstance
   }
 
   createWindow(): BrowserWindow {
@@ -47,6 +58,19 @@ export class WindowService {
       win.show()
     })
 
+    win.on('close', async (e) => {
+      e.preventDefault()
+      const { response } = await this._dialogInstance.showMessageBox(win, {
+        type: 'question',
+        buttons: ['Yes', 'No'],
+        title: 'Confirm',
+        message: 'Are you sure you want to quit?',
+      })
+      if (response === 0) {
+        win.destroy()
+      }
+    })
+
     // See: https://github.com/electron/electron/issues/38560
     win.webContents.ipc.handle('get-state', async () => {
       return {
@@ -60,6 +84,11 @@ export class WindowService {
 }
 
 /** Default WindowService instance */
-export const windowService = new WindowService(BrowserWindow, screen, ipcMain)
+export const windowService = new WindowService(
+  BrowserWindow,
+  screen,
+  ipcMain,
+  dialog
+)
 
 export default windowService

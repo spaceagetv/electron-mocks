@@ -24,6 +24,7 @@ Currently implemented:
 - [MockWebContents](src/MockWebContents.ts)
 - [MockIpcMain](src/MockIpcMain.ts)
 - [MockIpcRenderer](src/MockIpcRenderer.ts)
+- [MockDialog](src/MockDialog.ts)
 - [MockScreen](src/MockScreen.ts)
 - [MockDisplay](src/MockDisplay.ts)
 
