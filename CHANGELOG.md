@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/spaceagetv/electron-mocks/compare/v1.1.8...v1.2.0) (2023-07-17)
+
+
+### Features
+
+* 🚀 MockDialog ([73966d4](https://github.com/spaceagetv/electron-mocks/commit/73966d4509399fa073d582fe04d9bd64d5fa8359))
+
 ## [1.1.8](https://github.com/spaceagetv/electron-mocks/compare/v1.1.7...v1.1.8) (2023-07-02)
 
 
