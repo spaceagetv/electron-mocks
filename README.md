@@ -1,4 +1,5 @@
 # electron-mocks
+
 [![npm](https://img.shields.io/npm/v/electron-mocks.svg)](https://www.npmjs.com/package/electron-mocks)
 [![GitHub release](https://img.shields.io/github/release/spaceagetv/electron-mocks.svg)](https://github.com/spaceagetv/electron-mocks/releases)
 [![npm](https://img.shields.io/npm/dm/electron-mocks)](https://www.npmjs.com/package/electron-mocks)
@@ -27,6 +28,8 @@ Currently implemented:
 - [MockDialog](src/MockDialog.ts)
 - [MockScreen](src/MockScreen.ts)
 - [MockDisplay](src/MockDisplay.ts)
+- [MockAutoUpdater](src/MockAutoUpdater.ts)
+- [MockDownloadItem](src/MockDownloadItem.ts)
 
 All methods are implemented and should return logical values. Additionally, methods are wrapped in [sinon.spy()]([url](https://sinonjs.org/releases/latest/spies/)) so calls can be queried. All logical events should be emitted.
 
@@ -100,6 +103,5 @@ MIT
 
 ### Alternatives
 
-- [electron-mocha](https://github.com/jprichardson/electron-mocha) - Allows you to run your tests in Electron, but you still need to mock out IPC calls and spin up a real Electron instance
-- [electron-mock-ipc](https://github.com/h3poteto/electron-mock-ipc) - Mocks out Electron ipc calls. Does not rely on sinon. ipcMain and ipcRenderer communicate with one another.
-
+- [electron-mocha](https://github.com/jprichardson/electron-mocha) - Allows you to run your tests in Electron, but you still need to mock out IPC calls and spin up a real Electron instance. FWIW, you can use `electron-mocks` with `electron-mocha` to get the best of both worlds.
+- [electron-mock-ipc](https://github.com/h3poteto/electron-mock-ipc) - Mocks out Electron ipc calls. Does not rely on sinon. ipcMain and ipcRenderer communicate with one another. Again, you can mix and match this with `electron-mocks` if you want.
