@@ -96,12 +96,12 @@ describe('MockBrowserWindow', () => {
     sinon.assert.calledOnce(window.webContents.loadURL as sinon.SinonSpy)
     sinon.assert.calledWithExactly(
       window.webContents.loadURL as sinon.SinonSpy,
-      'https://example.com'
+      'https://example.com',
     )
     sinon.assert.calledOnce(window.webContents.loadURL as sinon.SinonSpy)
     sinon.assert.calledWithExactly(
       window.webContents.loadURL as sinon.SinonSpy,
-      'https://example.com'
+      'https://example.com',
     )
     expect(window.webContents.getURL()).to.equal('https://example.com')
   })
@@ -116,10 +116,10 @@ describe('MockBrowserWindow', () => {
     sinon.assert.calledOnce(window.webContents.loadFile as sinon.SinonSpy)
     sinon.assert.calledWithExactly(
       window.webContents.loadFile as sinon.SinonSpy,
-      'test/fixtures/index.html'
+      'test/fixtures/index.html',
     )
     expect(window.webContents.getURL()).to.equal(
-      'file://test/fixtures/index.html'
+      'file://test/fixtures/index.html',
     )
   })
 

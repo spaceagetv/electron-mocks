@@ -28,7 +28,7 @@ describe('MockDialog', () => {
       mockDialog.showOpenDialog.calledWith({
         title: 'title',
         defaultPath: 'defaultPath',
-      })
+      }),
     ).to.be.true
     expect(result).to.deep.equal(returnValue)
   })
@@ -54,7 +54,7 @@ describe('MockDialog', () => {
       mockDialog.showSaveDialog.calledWith({
         title: 'title',
         defaultPath: 'defaultPath',
-      })
+      }),
     ).to.be.true
     expect(result).to.deep.equal(returnValue)
   })
@@ -80,7 +80,7 @@ describe('MockDialog', () => {
       mockDialog.showMessageBox.calledWith({
         title: 'title',
         message: 'message',
-      })
+      }),
     ).to.be.true
     expect(result).to.deep.equal(returnValue)
   })
@@ -114,7 +114,7 @@ describe('MockDialog', () => {
       mockDialog.showMessageBoxSync.calledWith({
         title: 'title',
         message: 'message',
-      })
+      }),
     ).to.be.true
     expect(result).to.equal(returnValue)
   })
@@ -137,7 +137,7 @@ describe('MockDialog', () => {
       mockDialog.showOpenDialogSync.calledWith({
         title: 'title',
         defaultPath: 'defaultPath',
-      })
+      }),
     ).to.be.true
     expect(result).to.deep.equal(returnValue)
   })
@@ -163,7 +163,7 @@ describe('MockDialog', () => {
       mockDialog.showSaveDialogSync.calledWith({
         title: 'title',
         defaultPath: 'defaultPath',
-      })
+      }),
     ).to.be.true
     expect(result).to.deep.equal(returnValue)
   })

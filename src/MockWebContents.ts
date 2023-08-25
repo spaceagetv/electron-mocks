@@ -171,7 +171,7 @@ export class MockWebContents extends EventEmitter implements WebContents {
         | 'browserView'
         | 'remote'
         | 'webview'
-        | 'offscreen'
+        | 'offscreen',
   )
   setImageAnimationPolicy = sinon.spy()
 
