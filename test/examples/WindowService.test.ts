@@ -34,7 +34,7 @@ describe('WindowService', () => {
       MockBrowserWindow,
       screenMock,
       ipcMainMock,
-      dialogMock
+      dialogMock,
     )
   })
 
@@ -55,12 +55,12 @@ describe('WindowService', () => {
 
       sinon.assert.calledOnceWithExactly(
         browserWindow.webContents.loadFile as sinon.SinonSpy,
-        'index.html'
+        'index.html',
       )
       sinon.assert.calledOnceWithExactly(
         browserWindow.webContents.ipc.handle as sinon.SinonSpy,
         'get-state',
-        sinon.match.func
+        sinon.match.func,
       )
     })
 
@@ -86,7 +86,7 @@ describe('WindowService', () => {
           buttons: ['Yes', 'No'],
           title: 'Confirm',
           message: 'Are you sure you want to quit?',
-        }
+        },
       )
       sinon.assert.calledOnce(browserWindow.destroy as sinon.SinonSpy)
       expect(browserWindow.isDestroyed()).to.be.true
@@ -114,7 +114,7 @@ describe('WindowService', () => {
           buttons: ['Yes', 'No'],
           title: 'Confirm',
           message: 'Are you sure you want to quit?',
-        }
+        },
       )
       sinon.assert.notCalled(browserWindow.destroy as sinon.SinonSpy)
       expect(browserWindow.isDestroyed()).to.be.false

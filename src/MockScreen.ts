@@ -17,7 +17,7 @@ export class MockScreen extends EventEmitter implements Electron.Screen {
   dipToScreenRect = sinon.spy(
     (window: Electron.BrowserWindow | null, rect: Electron.Rectangle) => {
       return rect
-    }
+    },
   )
   screenToDipPoint = sinon.spy((point: Electron.Point) => {
     return point
@@ -25,7 +25,7 @@ export class MockScreen extends EventEmitter implements Electron.Screen {
   screenToDipRect = sinon.spy(
     (window: Electron.BrowserWindow | null, rect: Electron.Rectangle) => {
       return rect
-    }
+    },
   )
 
   constructor(displays: Electron.Display[] = []) {

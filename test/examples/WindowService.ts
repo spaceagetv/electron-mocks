@@ -24,7 +24,7 @@ export class WindowService {
     WindowClass: typeof BrowserWindow,
     screenInstance: Screen,
     ipcMainInstance: IpcMain,
-    dialogInstance: Dialog
+    dialogInstance: Dialog,
   ) {
     this._WindowClass = WindowClass
     this._screenInstance = screenInstance
@@ -88,7 +88,7 @@ export const windowService = new WindowService(
   BrowserWindow,
   screen,
   ipcMain,
-  dialog
+  dialog,
 )
 
 export default windowService

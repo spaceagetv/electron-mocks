@@ -160,7 +160,7 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
   })
   isSimpleFullScreen = sinon.spy(() => this._simpleFullscreen)
   isNormal = sinon.spy(
-    () => !this._fullscreen && !this._minimized && !this._maximized
+    () => !this._fullscreen && !this._minimized && !this._maximized,
   )
   setAspectRatio = sinon.spy()
   setBackgroundColor = sinon.spy((color: string) => {
@@ -395,7 +395,7 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
   constructor(options: Electron.BrowserWindowConstructorOptions = {}) {
     super()
     this.webContents = new MockWebContents(
-      options.webPreferences
+      options.webPreferences,
     ) as unknown as WebContents
 
     this.webContents.on('did-finish-load', () => {
