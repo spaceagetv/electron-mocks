@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/spaceagetv/electron-mocks/compare/v1.2.0...v1.3.0) (2023-08-25)
+
+
+### Features
+
+* 🐣 DownloadItem + AutoUpdater ([8be624b](https://github.com/spaceagetv/electron-mocks/commit/8be624bc54c249da96219d13bfacb4a98dd468a0))
+
 # [1.2.0](https://github.com/spaceagetv/electron-mocks/compare/v1.1.8...v1.2.0) (2023-07-17)
 
 
