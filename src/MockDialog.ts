@@ -14,7 +14,7 @@ export class MockDialog implements Electron.Dialog {
     checkboxChecked: false,
   } as Electron.MessageBoxReturnValue)
   public showErrorBox = sinon.stub()
-  public showCertificateTrustDialog = sinon.stub()
+  public showCertificateTrustDialog = sinon.stub().resolves()
   public showMessageBoxSync = sinon.stub().returns(0)
   public showOpenDialogSync = sinon.stub().returns(['test-file.txt'])
   public showSaveDialogSync = sinon.stub().returns('test-file.txt')
