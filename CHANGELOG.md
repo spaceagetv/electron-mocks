@@ -1,3 +1,10 @@
+## [1.3.1](https://github.com/spaceagetv/electron-mocks/compare/v1.3.0...v1.3.1) (2024-06-19)
+
+
+### Bug Fixes
+
+* showCertificateTrustDialog should return promise ([cb5c11c](https://github.com/spaceagetv/electron-mocks/commit/cb5c11cd97317e61d6c191064587837d584b1732))
+
 # [1.3.0](https://github.com/spaceagetv/electron-mocks/compare/v1.2.0...v1.3.0) (2023-08-25)
 
 
