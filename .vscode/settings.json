@@ -8,5 +8,13 @@
   "editor.formatOnSave": false,
   "eslint.format.enable": true,
   "eslint.codeActionsOnSave.mode": "all",
-  "typescript.preferences.importModuleSpecifier": "relative"
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "cSpell.words": [
+    "fullscreenable",
+    "maximizable",
+    "minimizable",
+    "Screenable",
+    "Thumbar",
+    "unmaximize"
+  ]
 }

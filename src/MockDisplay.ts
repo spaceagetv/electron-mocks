@@ -61,6 +61,11 @@ export class MockDisplay implements Electron.Display {
   internal = displayId ? false : true
   label: string
 
+  // for Electron 32 update
+  detected = true
+  maximumCursorSize = { width: 128, height: 128 }
+  nativeOrigin = { x: 0, y: 0 }
+
   constructor(display: Partial<Electron.Display> = {}) {
     this.id = displayId++
     this.label = `Display ${this.id}`

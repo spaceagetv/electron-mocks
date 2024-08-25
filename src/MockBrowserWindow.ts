@@ -2,6 +2,7 @@ import sinon from 'sinon'
 import { BrowserWindow, WebContents, nativeImage } from 'electron'
 import EventEmitter from 'events'
 import { MockWebContents } from './MockWebContents'
+import { MockView } from './MockView'
 
 let nextId = 1
 
@@ -378,6 +379,18 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
     return { x: 0, y: 0 }
   })
   setTouchBar = sinon.spy()
+
+  showAllTabs = sinon.spy()
+  getContentView = sinon.spy()
+  setContentView = sinon.spy()
+  contentView = new MockView()
+
+  // new in Electron 25
+  getWindowButtonPosition = sinon.spy()
+  setWindowButtonPosition = sinon.spy()
+  setBackgroundMaterial = sinon.spy()
+
+  // needed for Electron 32
   setBrowserView = sinon.spy()
   getBrowserView = sinon.spy(() => null)
   addBrowserView = sinon.spy()
@@ -385,11 +398,6 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
   setTopBrowserView = sinon.spy()
   getBrowserViews = sinon.spy(() => [])
   setTitleBarOverlay = sinon.spy()
-
-  // new in Electron 25
-  getWindowButtonPosition = sinon.spy()
-  setWindowButtonPosition = sinon.spy()
-  setBackgroundMaterial = sinon.spy()
 
   private _options: Electron.BrowserWindowConstructorOptions = {}
   constructor(options: Electron.BrowserWindowConstructorOptions = {}) {

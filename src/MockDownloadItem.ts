@@ -43,6 +43,11 @@ export class MockDownloadItem extends EventEmitter implements DownloadItem {
     this.savePath = path
   })
 
+  // for Electron 32 update
+  getCurrentBytesPerSecond = sinon.spy(() => 100)
+  getEndTime = sinon.spy(() => Date.now() + 5000)
+  getPercentComplete = sinon.spy(() => this._receivedBytes / this._totalBytes)
+
   constructor(url: string) {
     super()
     this._URL = url
