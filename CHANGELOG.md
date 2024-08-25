@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/spaceagetv/electron-mocks/compare/v1.3.1...v1.4.0) (2024-08-25)
+
+
+### Features
+
+* update to Electron 32 ([0cd85a5](https://github.com/spaceagetv/electron-mocks/commit/0cd85a5d5fc06f1802ff6d1373ef63987aa1c888))
+
 ## [1.3.1](https://github.com/spaceagetv/electron-mocks/compare/v1.3.0...v1.3.1) (2024-06-19)
 
 
