@@ -9,6 +9,8 @@
   "eslint.format.enable": true,
   "eslint.codeActionsOnSave.mode": "all",
   "typescript.preferences.importModuleSpecifier": "relative",
+  "mochaExplorer.files": "test/**/*.test.?s",
+  "mochaExplorer.require": "ts-node/register",
   "cSpell.words": [
     "fullscreenable",
     "maximizable",
