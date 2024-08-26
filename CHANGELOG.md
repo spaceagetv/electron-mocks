@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/spaceagetv/electron-mocks/compare/v1.4.1...v1.4.2) (2024-08-26)
+
+
+### Bug Fixes
+
+* ipcRenderer.sendTo() removal handling ([d1beb47](https://github.com/spaceagetv/electron-mocks/commit/d1beb4746ca90e99f7c8a315150c8b8bde2eaccc))
+
 ## [1.4.1](https://github.com/spaceagetv/electron-mocks/compare/v1.4.0...v1.4.1) (2024-08-26)
 
 
