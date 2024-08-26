@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/spaceagetv/electron-mocks/compare/v1.4.0...v1.4.1) (2024-08-26)
+
+
+### Bug Fixes
+
+* ipcRenderer.sendTo has been removed ([7a295ae](https://github.com/spaceagetv/electron-mocks/commit/7a295ae5dea4b80507922e693251a0e9d4225d4d))
+
 # [1.4.0](https://github.com/spaceagetv/electron-mocks/compare/v1.3.1...v1.4.0) (2024-08-25)
 
 
