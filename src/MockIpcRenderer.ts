@@ -9,6 +9,6 @@ export class MockIpcRenderer
   invoke = sinon.stub().resolves()
   sendSync = sinon.stub().returns(undefined)
   postMessage = sinon.stub()
-  sendTo = sinon.stub()
+  sendTo? = sinon.stub()
   sendToHost = sinon.stub()
 }

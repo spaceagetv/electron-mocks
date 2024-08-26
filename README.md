@@ -23,6 +23,7 @@ Currently implemented:
 
 - [MockBrowserWindow](src/MockBrowserWindow.ts)
 - [MockWebContents](src/MockWebContents.ts)
+- [MockView](src/MockView.ts)
 - [MockIpcMain](src/MockIpcMain.ts)
 - [MockIpcRenderer](src/MockIpcRenderer.ts)
 - [MockDialog](src/MockDialog.ts)
