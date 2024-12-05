@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/spaceagetv/electron-mocks/compare/v1.4.2...v1.5.0) (2024-12-05)
+
+
+### Bug Fixes
+
+* Node20 for semantic-release ([5efd341](https://github.com/spaceagetv/electron-mocks/commit/5efd34136dc66a3c28acd005c0209330876c1caa))
+
+
+### Features
+
+* Electron 33 ([c818ebf](https://github.com/spaceagetv/electron-mocks/commit/c818ebf388e3257a0c87e2e44afc179d000524f2))
+
 ## [1.4.2](https://github.com/spaceagetv/electron-mocks/compare/v1.4.1...v1.4.2) (2024-08-26)
 
 
