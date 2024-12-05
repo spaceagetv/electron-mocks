@@ -23,5 +23,6 @@ export class MockView extends EventEmitter implements View {
     return { ...this._bounds }
   })
   setBackgroundColor = sinon.spy()
+  setBorderRadius = sinon.spy()
   setVisible = sinon.spy()
 }
