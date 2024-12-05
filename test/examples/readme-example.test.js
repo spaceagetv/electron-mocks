@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { describe, it } = require('mocha')
 const { expect, assert } = require('chai')
 const { BrowserWindow } = require('electron')

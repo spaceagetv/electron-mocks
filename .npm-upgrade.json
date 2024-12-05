@@ -1,0 +1,20 @@
+{
+  "ignore": {
+    "chai": {
+      "versions": "^5",
+      "reason": "Chai 5 is ESM"
+    },
+    "@types/chai": {
+      "versions": "^5",
+      "reason": "ESM"
+    },
+    "chai-as-promised": {
+      "versions": "^8",
+      "reason": "ESM"
+    },
+    "@types/chai-as-promised": {
+      "versions": "^8",
+      "reason": "ESM"
+    }
+  }
+}

@@ -19,7 +19,7 @@ describe('MockBrowserWindow', () => {
       height: 451,
       backgroundColor: '#000000',
       show: false,
-    }) as Electron.BrowserWindow
+    })
     // expect ready-to-show event to be emitted
     const readyPromise = new Promise((resolve) => {
       window.on('ready-to-show', resolve)
@@ -87,8 +87,11 @@ describe('MockBrowserWindow', () => {
   })
 
   it('should be able to load a URL', async () => {
-    const window = new MockBrowserWindow() as Electron.BrowserWindow
+    const window = new MockBrowserWindow()
     const loadPromise = new Promise((resolve) => {
+      // typescript bug
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       window.webContents.on('did-finish-load', resolve)
     })
     window.loadURL('https://example.com')
@@ -109,6 +112,8 @@ describe('MockBrowserWindow', () => {
   it('should be able to load a file', async () => {
     const window = new MockBrowserWindow() as Electron.BrowserWindow
     const loadPromise = new Promise((resolve) => {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       window.webContents.on('did-finish-load', resolve)
     })
     window.loadFile('test/fixtures/index.html')
