@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/spaceagetv/electron-mocks/compare/v1.5.0...v1.6.0) (2024-12-08)
+
+
+### Features
+
+* MockApp ([8449d6b](https://github.com/spaceagetv/electron-mocks/commit/8449d6b5a4509a6ea5e5fe17131258d939f5d013))
+
 # [1.5.0](https://github.com/spaceagetv/electron-mocks/compare/v1.4.2...v1.5.0) (2024-12-05)
 
 
