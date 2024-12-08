@@ -21,6 +21,7 @@ It's still very rough, so please help contribute to help make this functionality
 
 Currently implemented:
 
+- [MockApp](src/MockApp.ts)
 - [MockBrowserWindow](src/MockBrowserWindow.ts)
 - [MockWebContents](src/MockWebContents.ts)
 - [MockView](src/MockView.ts)
@@ -31,6 +32,7 @@ Currently implemented:
 - [MockDisplay](src/MockDisplay.ts)
 - [MockAutoUpdater](src/MockAutoUpdater.ts)
 - [MockDownloadItem](src/MockDownloadItem.ts)
+- [MockView](src/MockView.ts)
 
 All methods are implemented and should return logical values. Additionally, methods are wrapped in [sinon.spy()]([url](https://sinonjs.org/releases/latest/spies/)) so calls can be queried. All logical events should be emitted.
 
