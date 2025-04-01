@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/spaceagetv/electron-mocks/compare/v1.6.0...v1.7.0) (2025-04-01)
+
+
+### Features
+
+* electron-35 ([3c12f9e](https://github.com/spaceagetv/electron-mocks/commit/3c12f9e41a39a22e1029acb978cd9e3f76f2bb39))
+
 # [1.6.0](https://github.com/spaceagetv/electron-mocks/compare/v1.5.0...v1.6.0) (2024-12-08)
 
 
