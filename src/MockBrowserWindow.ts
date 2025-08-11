@@ -73,6 +73,8 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
   private _title = ''
   private _modal = false
   private _skipTaskbar = false
+  private _contentProtected = false
+  private _snapped = false
 
   // methods
   destroy = sinon.spy(() => {
@@ -353,7 +355,14 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
   })
   isVisibleOnAllWorkspaces = sinon.spy(() => this._visibleOnAllWorkspaces)
   setIgnoreMouseEvents = sinon.spy()
-  setContentProtection = sinon.spy()
+  setContentProtection = sinon.spy((enable: boolean) => {
+    this._contentProtected = enable
+  })
+  isContentProtected = sinon.spy(() => this._contentProtected)
+  get snapped(): boolean {
+    return this._snapped
+  }
+  isSnapped = sinon.spy(() => this._snapped)
   setFocusable = sinon.spy((focusable: boolean) => {
     this.focusable = focusable
   })
