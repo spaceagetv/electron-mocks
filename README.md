@@ -32,7 +32,6 @@ Currently implemented:
 - [MockDisplay](src/MockDisplay.ts)
 - [MockAutoUpdater](src/MockAutoUpdater.ts)
 - [MockDownloadItem](src/MockDownloadItem.ts)
-- [MockView](src/MockView.ts)
 
 All methods are implemented and should return logical values. Additionally, methods are wrapped in [sinon.spy()]([url](https://sinonjs.org/releases/latest/spies/)) so calls can be queried. All logical events should be emitted.
 
