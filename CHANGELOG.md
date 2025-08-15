@@ -1,10 +1,3 @@
-## [1.7.1](https://github.com/spaceagetv/electron-mocks/compare/v1.7.0...v1.7.1) (2025-08-11)
-
-
-### Bug Fixes
-
-* upgrade electron to v37 ([21ed432](https://github.com/spaceagetv/electron-mocks/commit/21ed432e0a11feb79fc9bda190992d77b113123a))
-
 # [1.7.0](https://github.com/spaceagetv/electron-mocks/compare/v1.6.0...v1.7.0) (2025-04-01)
 
 
