@@ -1,3 +1,10 @@
+## [1.7.3](https://github.com/spaceagetv/electron-mocks/compare/v1.7.2...v1.7.3) (2025-08-15)
+
+
+### Bug Fixes
+
+* revert E37 ([41681e9](https://github.com/spaceagetv/electron-mocks/commit/41681e9eef8e696006a95cf5a9d77faf3c8acca0))
+
 ## [1.7.2](https://github.com/spaceagetv/electron-mocks/compare/v1.7.1...v1.7.2) (2025-08-15)
 
 
