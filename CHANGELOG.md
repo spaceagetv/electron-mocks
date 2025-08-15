@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/spaceagetv/electron-mocks/compare/v1.7.3...v1.8.0) (2025-08-15)
+
+
+### Features
+
+* Electron 37 compatibility ([d86ee9a](https://github.com/spaceagetv/electron-mocks/commit/d86ee9a9650e0b16fb6ea7c73c5d2b3cfba6b290))
+
 ## [1.7.3](https://github.com/spaceagetv/electron-mocks/compare/v1.7.2...v1.7.3) (2025-08-15)
 
 
