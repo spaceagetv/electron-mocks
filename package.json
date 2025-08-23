@@ -53,7 +53,7 @@
     "chai": "^4.3.8",
     "chai-as-promised": "^7.1.1",
     "conventional-changelog-conventionalcommits": "^8.0.0",
-    "electron": "^37.0.0",
+    "electron": "^37.3.1",
     "electron-mocks": "file:./",
     "eslint": "^9.16.0",
     "eslint-config-prettier": "^9.1.0",
