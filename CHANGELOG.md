@@ -1,3 +1,5 @@
+## [1.8.2](https://github.com/spaceagetv/electron-mocks/compare/v1.8.1...v1.8.2) (2025-08-23)
+
 ## [1.8.1](https://github.com/spaceagetv/electron-mocks/compare/v1.8.0...v1.8.1) (2025-08-23)
 
 
