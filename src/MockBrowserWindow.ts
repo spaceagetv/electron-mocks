@@ -75,6 +75,7 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
   private _skipTaskbar = false
   private _contentProtected = false
   private _snapped = false
+  private _accentColor: string | boolean = false
 
   // methods
   destroy = sinon.spy(() => {
@@ -470,4 +471,13 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
       if (this._visible) this.emit('show')
     })
   }
+  getAccentColor(): string | boolean {
+    return this._accentColor
+  }
+
+  setAccentColor(accentColor: boolean | string): void {
+    this._accentColor = accentColor
+  }
+
+  tabbingIdentifier?: string
 }

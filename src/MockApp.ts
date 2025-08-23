@@ -138,4 +138,8 @@ export class MockApp extends EventEmitter implements Electron.App {
   constructor() {
     super()
   }
+
+  getRecentDocuments(): string[] {
+    return []
+  }
 }
