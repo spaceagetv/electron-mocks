@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/spaceagetv/electron-mocks/compare/v1.8.0...v1.8.1) (2025-08-23)
+
+
+### Bug Fixes
+
+* newer e37 compatibility ([0709d74](https://github.com/spaceagetv/electron-mocks/commit/0709d7495d7e948fdd56ae5f9409a1de9d66d80f))
+
 # [1.8.0](https://github.com/spaceagetv/electron-mocks/compare/v1.7.3...v1.8.0) (2025-08-15)
 
 
