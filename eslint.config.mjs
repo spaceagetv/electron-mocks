@@ -33,6 +33,7 @@ export default [
 
     languageOptions: {
       globals: {
+        ...globals.builtin,
         ...globals.node,
       },
 

@@ -69,10 +69,7 @@ export class MockApp extends EventEmitter implements Electron.App {
   isUnityRunning = sinon.spy(() => false)
   private _loginItemSettings: Electron.LoginItemSettings = {
     openAtLogin: false,
-    openAsHidden: false,
     wasOpenedAtLogin: false,
-    wasOpenedAsHidden: false,
-    restoreState: false,
     status: 'not-found',
     executableWillLaunchAtLogin: true,
     launchItems: [],
@@ -105,6 +102,18 @@ export class MockApp extends EventEmitter implements Electron.App {
   setProxy = sinon.spy()
   resolveProxy = sinon.spy((url: string) => Promise.resolve(url))
   setClientCertRequestPasswordHandler = sinon.spy()
+  configureWebAuthn = sinon.spy()
+  private _accessibilitySupportFeatures: string[] = []
+  getAccessibilitySupportFeatures = sinon.spy(() => [
+    ...this._accessibilitySupportFeatures,
+  ])
+  setAccessibilitySupportFeatures = sinon.spy((features: string[]) => {
+    this._accessibilitySupportFeatures = [...features]
+  })
+  isActive = sinon.spy(() => true)
+  isHardwareAccelerationEnabled = sinon.spy(() => true)
+  setDesktopName = sinon.spy()
+  setToastActivatorCLSID = sinon.spy()
 
   // Properties
   accessibilitySupportEnabled = false
@@ -134,6 +143,7 @@ export class MockApp extends EventEmitter implements Electron.App {
   name = 'MockApp'
   userAgentFallback = 'MockApp'
   runningUnderARM64Translation = false
+  toastActivatorCLSID = ''
 
   constructor() {
     super()

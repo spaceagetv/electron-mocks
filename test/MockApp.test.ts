@@ -282,10 +282,7 @@ describe('MockApp', () => {
     expect(app.getLoginItemSettings.calledOnce).to.be.true
     expect(result).to.deep.equal({
       openAtLogin: false,
-      openAsHidden: false,
       wasOpenedAtLogin: false,
-      wasOpenedAsHidden: false,
-      restoreState: false,
       status: 'not-found',
       executableWillLaunchAtLogin: true,
       launchItems: [],
