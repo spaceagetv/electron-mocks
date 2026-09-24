@@ -15,6 +15,7 @@ export class MockBrowserWindow extends EventEmitter implements BrowserWindow {
   static fromWebContents = sinon.spy(() => null)
   static fromBrowserView = sinon.spy(() => null)
   static fromId = sinon.spy(() => null)
+  static clearPersistedState = sinon.spy()
 
   // properties
   id = nextId++

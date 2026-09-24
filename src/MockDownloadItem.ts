@@ -24,6 +24,7 @@ export class MockDownloadItem extends EventEmitter implements DownloadItem {
   getMimeType = sinon.spy(() => '')
   getReceivedBytes = sinon.spy(() => this._receivedBytes)
   getSavePath = sinon.spy(() => this.savePath)
+  getInitiatorOrigin = sinon.spy(() => '')
   getStartTime = sinon.spy(() => Date.now())
   getState = sinon.spy(() => this._state)
   getTotalBytes = sinon.spy(() => this._totalBytes)

@@ -4,19 +4,16 @@
     "esModuleInterop": true,
     "target": "es6",
     "noImplicitAny": true,
-    "moduleResolution": "node",
     "sourceMap": true,
     "inlineSources": true,
     "outDir": "dist",
     "declaration": true,
     "declarationDir": "dist/types",
-    "baseUrl": ".",
-    "paths": {
-      "*": [
-        "node_modules/*",
-        "src/types/*"
-      ]
-    }
+    "strict": false,
+    "types": [
+      "node",
+      "mocha"
+    ]
   },
   "include": [
     "src/**/*",
