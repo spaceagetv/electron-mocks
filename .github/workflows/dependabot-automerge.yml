@@ -1,5 +1,5 @@
-# Auto-merges Dependabot patch and minor updates once every other check on the
-# PR has passed. Majors are left for review.
+# Auto-merges Dependabot minor/patch and security updates once every other check on the
+# PR has passed. Majors outside the security group are left for review.
 # This variant waits for CI itself instead of relying on required status
 # checks: a require-CI ruleset would block semantic-release, which pushes
 # release commits to the default branch with GITHUB_TOKEN.
@@ -24,7 +24,15 @@ jobs:
     steps:
       - id: meta
         uses: dependabot/fetch-metadata@v2
-      - if: contains(fromJSON('["version-update:semver-patch","version-update:semver-minor"]'), steps.meta.outputs.update-type)
+      # Grouped PRs: decide by group name. fetch-metadata reports update-type
+      # as null for security groups and has misreported minor/patch groups as
+      # major; the group itself is defined in dependabot.yml. Security groups
+      # merge even with a major inside: CI is the gate.
+      # Single-package PRs: patch and minor only.
+      - if: >-
+          contains(fromJSON('["minor-and-patch","npm-minor-patch","security","npm-security"]'), steps.meta.outputs.dependency-group)
+          || (steps.meta.outputs.dependency-group == ''
+              && contains(fromJSON('["version-update:semver-patch","version-update:semver-minor"]'), steps.meta.outputs.update-type))
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
