@@ -1,0 +1,62 @@
+# Auto-merges Dependabot minor/patch and security updates once every other check on the
+# PR has passed. Majors outside the security group are left for review.
+# This variant waits for CI itself instead of relying on required status
+# checks: a require-CI ruleset would block semantic-release, which pushes
+# release commits to the default branch with GITHUB_TOKEN.
+# Managed from jjeff/repo-upkeep (templates/dependabot-automerge-wait.yml).
+name: Dependabot auto-merge
+
+on: pull_request
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: dependabot-automerge-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  automerge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - id: meta
+        uses: dependabot/fetch-metadata@v2
+      # Grouped PRs: decide by group name. fetch-metadata reports update-type
+      # as null for security groups and has misreported minor/patch groups as
+      # major; the group itself is defined in dependabot.yml. Security groups
+      # merge even with a major inside: CI is the gate.
+      # Single-package PRs: patch and minor only.
+      - if: >-
+          contains(fromJSON('["minor-and-patch","npm-minor-patch","security","npm-security"]'), steps.meta.outputs.dependency-group)
+          || (steps.meta.outputs.dependency-group == ''
+              && contains(fromJSON('["version-update:semver-patch","version-update:semver-minor"]'), steps.meta.outputs.update-type))
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Every check except this job. Any fail/cancel stops; anything still
+          # pending waits; merge only with at least one pass. No checks at all
+          # is "none" and never merges.
+          DECISION: >-
+            [.[] | select(.name != "automerge") | .bucket] as $b
+            | if ($b | length) == 0 then "none"
+              elif ($b | index("fail")) or ($b | index("cancel")) then "fail"
+              elif $b | index("pending") then "wait"
+              elif $b | index("pass") then "merge"
+              else "none" end
+        run: |
+          sleep 60 # let every workflow triggered by this push register its checks
+          while :; do
+            # gh exits 8 while checks are pending; the --jq output is still valid.
+            decision=$(gh pr checks "$PR_URL" --json name,bucket --jq "$DECISION") || true
+            decision=${decision:-none}
+            echo "checks: $decision"
+            case "$decision" in
+              merge) exec gh pr merge --squash "$PR_URL" ;;
+              wait) sleep 30 ;;
+              fail) echo "A check failed; leaving the PR open."; exit 0 ;;
+              *) echo "::error::No CI checks ran on this PR; refusing to merge."; exit 1 ;;
+            esac
+          done
