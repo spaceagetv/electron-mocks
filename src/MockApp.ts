@@ -12,6 +12,9 @@ export class MockApp extends EventEmitter implements Electron.App {
   isHidden = sinon.spy(() => false)
   show = sinon.spy()
   setAppLogsPath = sinon.spy()
+  // macOS app shims (added in Electron 44.9.0 / 45)
+  startAppShimServer = sinon.spy()
+  stopAppShimServer = sinon.spy()
   getAppPath = sinon.spy(() => '/path/to/app')
   getPath = sinon.spy((name: string) => `/path/to/${name}`)
   // @todo: create a NativeImage mock and return it here
