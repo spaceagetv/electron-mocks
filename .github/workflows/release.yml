@@ -8,6 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # push the release commit and tag
+      issues: write # @semantic-release/github comments on released issues
+      pull-requests: write # ...and on released PRs
+      id-token: write # npm trusted publishing (OIDC); no NPM_TOKEN needed
 
     steps:
       - uses: actions/checkout@v3
@@ -17,8 +22,14 @@ jobs:
         with:
           node-version: 24.x
 
+      # Trusted publishing needs npm >= 11.5.1. Pinned rather than @latest
+      # because this job holds an OIDC credential that can publish.
+      - name: Update npm
+        run: npm install -g npm@11.5.1 --ignore-scripts
+
+      # --ignore-scripts keeps lifecycle scripts out of a job that can publish.
       - name: Install dependencies
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Build
         run: npm run build
@@ -29,5 +40,4 @@ jobs:
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
