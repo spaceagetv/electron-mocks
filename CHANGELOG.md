@@ -1,3 +1,15 @@
+# [1.9.0](https://github.com/spaceagetv/electron-mocks/compare/v1.8.2...v1.9.0) (2026-11-16)
+
+
+### Bug Fixes
+
+* **ci:** use Node 24 in release workflow ([4d56742](https://github.com/spaceagetv/electron-mocks/commit/4d56742f09feaedd83a2983474e792744479205f))
+
+
+### Features
+
+* support Electron 44 and update dependencies ([0f69efd](https://github.com/spaceagetv/electron-mocks/commit/0f69efdbb4c9d37b5658ba2bc49424c203149bec))
+
 ## [1.8.2](https://github.com/spaceagetv/electron-mocks/compare/v1.8.1...v1.8.2) (2025-08-23)
 
 ## [1.8.1](https://github.com/spaceagetv/electron-mocks/compare/v1.8.0...v1.8.1) (2025-08-23)
