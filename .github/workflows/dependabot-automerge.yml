@@ -23,7 +23,7 @@ jobs:
     if: github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
       - id: meta
-        uses: dependabot/fetch-metadata@v2
+        uses: dependabot/fetch-metadata@v3
       # Grouped PRs: decide by group name. fetch-metadata reports update-type
       # as null for security groups and has misreported minor/patch groups as
       # major; the group itself is defined in dependabot.yml. Security groups
